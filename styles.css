@@ -1,0 +1,484 @@
+body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #eee;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    scroll-behavior: smooth; /* 添加平滑滚动 */
+}
+
+/* 全局圆角设置 */
+button, input, textarea, select, .container, .software-card {
+    border-radius: 16px;
+    transition: border-radius 0.3s ease;
+}
+
+/* 小尺寸元素圆角 */
+button, input[type="button"], input[type="submit"], .download-btn {
+    border-radius: 8px;
+}
+
+/* 为单个字符添加悬浮放大效果 */
+.char-hover {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    -webkit-text-fill-color: #eee; /* 确保普通状态下文字可见 */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.char-hover:hover {
+    transform: scale(1.3);
+    z-index: 1000;
+    position: relative;
+    color: #fff;
+    text-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff, 0 0 35px #ff00ff;
+    background: inherit;
+    -webkit-background-clip: inherit;
+    background-clip: inherit;
+    -webkit-text-fill-color: #fff;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.4s ease;
+}
+
+/* 下载弹窗样式 */
+.download-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #1a1a2e;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 16px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: white;
+}
+
+.download-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.download-option {
+    padding: 12px;
+    background: linear-gradient(135deg, #4a6cf7, #2541b2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.download-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.light-point {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.6;
+    z-index: 0;
+    mix-blend-mode: screen;
+    display: block;
+    pointer-events: none;
+    visibility: visible;
+    transition: left 0.1s linear, top 0.1s linear, filter 0.3s ease, opacity 0.3s ease;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: inherit;
+    box-shadow: 0 0 70px currentColor;
+}
+
+#light1 {
+    background: radial-gradient(circle, rgba(255, 0, 100, 0.8) 0%, rgba(255, 0, 100, 0) 70%);
+    left: 20%;
+    top: 30%;
+    box-shadow: 0 0 70px rgba(255, 0, 100, 0.7);
+}
+
+#light2 {
+    background: radial-gradient(circle, rgba(0, 200, 255, 0.8) 0%, rgba(0, 200, 255, 0) 70%);
+    left: 70%;
+    top: 60%;
+    box-shadow: 0 0 70px rgba(0, 200, 255, 0.7);
+}
+
+#light3 {
+    background: radial-gradient(circle, rgba(100, 255, 150, 0.8) 0%, rgba(100, 255, 150, 0) 70%);
+    left: 40%;
+    top: 80%;
+    box-shadow: 0 0 70px rgba(100, 255, 150, 0.7);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    animation: fadeIn 1s ease-out;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    50% { opacity: 0.5; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 10px 25px rgba(255, 255, 255, 0.2),
+        inset 0 -10px 25px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 105, 180, 0.3),
+        0 0 50px rgba(100, 150, 255, 0.3),
+        20px 20px 60px rgba(255, 105, 180, 0.5),
+        -20px -20px 60px rgba(100, 150, 255, 0.5); }
+    50% { box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 10px 25px rgba(255, 255, 255, 0.2),
+        inset 0 -10px 25px rgba(0, 0, 0, 0.3),
+        0 0 80px rgba(255, 105, 180, 1.0),
+        0 0 100px rgba(100, 150, 255, 1.0),
+        20px 20px 120px rgba(255, 105, 180, 1.0),
+        -20px -20px 120px rgba(100, 150, 255, 1.0); }
+    100% { box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 10px 25px rgba(255, 255, 255, 0.2),
+        inset 0 -10px 25px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 105, 180, 0.3),
+        0 0 50px rgba(100, 150, 255, 0.3),
+        20px 20px 60px rgba(255, 105, 180, 0.5),
+        -20px -20px 60px rgba(100, 150, 255, 0.5); }
+}
+
+.software-card {
+    transition: box-shadow 0.5s ease-out;
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 10px 25px rgba(255, 255, 255, 0.2),
+        inset 0 -10px 25px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 105, 180, 0.3),
+        0 0 50px rgba(100, 150, 255, 0.3),
+        20px 20px 60px rgba(255, 105, 180, 0.5),
+        -20px -20px 60px rgba(100, 150, 255, 0.5); }
+    50% { box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 10px 25px rgba(255, 255, 255, 0.2),
+        inset 0 -10px 25px rgba(0, 0, 0, 0.3),
+        0 0 80px rgba(255, 105, 180, 1.0),
+        0 0 100px rgba(100, 150, 255, 1.0),
+        20px 20px 120px rgba(255, 105, 180, 1.0),
+        -20px -20px 120px rgba(100, 150, 255, 1.0); }
+    100% { box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 10px 25px rgba(255, 255, 255, 0.2),
+        inset 0 -10px 25px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 105, 180, 0.3),
+        0 0 50px rgba(100, 150, 255, 0.3),
+        20px 20px 60px rgba(255, 105, 180, 0.5),
+        -20px -20px 60px rgba(100, 150, 255, 0.5); }
+}
+
+.software-card {
+    transition: box-shadow 0.5s ease-out;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: 0;
+    background: linear-gradient(90deg, #ff00cc, #3333ff, #00ccff);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.6s ease;
+    transition-property: transform, background-position;
+    text-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.title:hover {
+    background-position: 100% center;
+    transform: translateY(-2px) scale(1.05);
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 30px rgba(255, 0, 255, 0.6);
+}
+
+.underline {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff00cc, #00ccff);
+    margin: 10px auto;
+    animation: underlineExpand 1.5s ease-out forwards;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+}
+
+@keyframes underlineExpand {
+    from { width: 0; }
+    to { width: 80px; }
+}
+
+.software-card {
+    background: rgba(30, 30, 60, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 4px 15px rgba(255, 255, 255, 0.1),
+        inset 0 -4px 15px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(102, 51, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(102, 51, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.software-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 0, 204, 0.1), rgba(0, 204, 255, 0.1));
+    z-index: -1;
+    border-radius: 24px;
+}
+
+.software-card:hover {
+    transform: translateY(-12px) translateZ(20px);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 10px 25px rgba(255, 255, 255, 0.2),
+        inset 0 -10px 25px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(255, 105, 180, 0.7),
+        0 0 60px rgba(100, 150, 255, 0.7);
+
+    border: 1px solid rgba(102, 51, 255, 0.7);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+}
+
+.software-info h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.software-info p {
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #ddd;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.download-btn {
+    position: relative;
+    background: linear-gradient(45deg, #ff00cc, #3333ff);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+    box-shadow: 0 5px 15px rgba(102, 51, 255, 0.4);
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: all 0.6s;
+    z-index: -1;
+}
+
+.download-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(102, 51, 255, 0.8), 0 0 30px rgba(255, 0, 255, 0.8);
+    background: linear-gradient(45deg, #ff00cc, #3366ff);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.download-btn:hover::before {
+    left: 100%;
+}
+
+@keyframes elastic {
+    0%, 100% { transform: scale(1); }
+    30% { transform: scale(1.1); }
+    50% { transform: scale(0.95); }
+    70% { transform: scale(1.05); }
+}
+
+.download-btn:active {
+    animation: elastic 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 功能网格布局 */
+.function-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.function-cell {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    box-shadow: 
+        0 8px 32px rgba(31, 38, 135, 0.15),
+        inset 0 4px 8px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.05),
+        0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    overflow: hidden;
+}
+
+.function-cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    z-index: -1;
+}
+
+.function-cell:hover {
+    transform: translateY(-8px) translateZ(10px);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 
+        0 16px 48px rgba(31, 38, 135, 0.25),
+        inset 0 8px 16px rgba(255, 255, 255, 0.5),
+        inset 0 -8px 16px rgba(0, 0, 0, 0.05),
+        0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.function-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+/* 加载动画样式 */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 添加导航样式 */
+.main-nav {
+    margin: 20px 0;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    color: #eee;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.main-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* 为锚点元素添加偏移量以适应固定导航 */
+#intro, #features, #download {
+    scroll-margin-top: 80px;
+}
