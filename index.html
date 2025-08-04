@@ -90,13 +90,14 @@
         }
 
         .navbar {
+            height: 50px; /* 调整导航栏高度为50px */
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-dark);
             text-decoration: none;
@@ -114,6 +115,8 @@
         }
 
         nav ul {
+            padding: 0; /* 移除内边距 */
+            margin: 0; /* 移除外边距 */
             display: flex;
             list-style: none;
             gap: 35px;
@@ -693,6 +696,12 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+            
             .container {
                 padding: 10px;
             }
@@ -736,9 +745,17 @@
             }
             
             nav ul {
-                gap: 15px;
+            padding: 0; /* 移除内边距 */
+            margin: 0; /* 移除外边距 */
+                gap: 8px;
                 flex-wrap: wrap;
                 justify-content: center;
+                font-size: 0.9rem;
+            }
+            
+            nav a {
+                padding: 3px 0;
+                white-space: nowrap;
             }
             
             .authors {
