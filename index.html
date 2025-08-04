@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA：罪恶都市次世代版 - 汉化补丁</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #165DFF;
+            --primary-dark: #0E42C2;
+            --primary-light: #4080FF;
+            --github: #24292e;
+            --github-hover: #3a3f44;
+            --text-primary: #333333;
+            --text-secondary: #555555;
+            --bg-transparent: rgba(255, 255, 255, 0.7);
+            --bg-card: rgba(255, 255, 255, 0.75);
+            --border-color: rgba(22, 93, 255, 0.2);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            --glow: 0 0 10px rgba(22, 93, 255, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: url('https://cdnimg-v2.gamekee.com/wiki2.0/images/829/43637/2022/4/18/201747.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        header {
+            padding: 18px 0;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-dark);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            box-shadow: var(--glow);
+        }
+
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        /* 突出的温馨提示样式 */
+        .note {
+            background: linear-gradient(135deg, rgba(255, 248, 225, 0.9), rgba(255, 250, 205, 0.9));
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+            padding: 22px 30px;
+            margin: 0 auto 40px;
+            color: #856404;
+            max-width: 900px;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        .note::before {
+            content: "⚠️";
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        .note-content {
+            margin-left: 30px;
+        }
+
+        .note strong {
+            color: #d35400;
+            font-weight: 600;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(255, 193, 7, 0.4);
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+            }
+        }
+
+        .hero-content {
+            margin-bottom: 60px;
+            padding: 30px;
+            background: var(--bg-transparent);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .game-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .game-image:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), var(--glow);
+            border-color: rgba(22, 93, 255, 0.3);
+        }
+
+        .game-image img {
+            width: 100%;
+            display: block;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .game-image:hover img {
+            transform: scale(1.08);
+        }
+
+        .game-image::after {
+            content: "\f00e";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            color: white;
+            font-size: 2rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-image:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .game-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-image:hover::before {
+            opacity: 1;
+        }
+
+        .hero-cta {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            box-shadow: var(--glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(22, 93, 255, 0.3);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        /* GitHub按钮样式 */
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--github);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .github-btn:hover {
+            background: var(--github-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .github-btn i {
+            font-size: 1.2rem;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--primary-dark);
+            position: relative;
+            padding: 10px 20px;
+            background: var(--bg-transparent);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            box-shadow: var(--glow);
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(3px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary), var(--primary-dark));
+        }
+
+        .card:hover {
+            border-color: rgba(22, 93, 255, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), var(--glow);
+        }
+
+        .text-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .text-content h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .text-content p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .feature-list {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .feature-marker {
+            min-width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin-top: 5px;
+            flex-shrink: 0;
+            box-shadow: var(--glow);
+        }
+
+        .installation-steps {
+            counter-reset: step;
+            margin-top: 20px;
+        }
+
+        .step {
+            position: relative;
+            padding: 25px 25px 25px 70px;
+            margin-bottom: 25px;
+            background: var(--bg-transparent);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            border-color: rgba(22, 93, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: var(--glow);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .authors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .author-item {
+            padding: 30px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .author-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(22, 93, 255, 0.3);
+            box-shadow: var(--shadow), var(--glow);
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .author-role {
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .author-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .download-section {
+            background: var(--bg-transparent);
+            border-radius: 8px;
+            padding: 60px;
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .download-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .download-section p {
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-secondary);
+        }
+
+        .download-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--primary-dark);
+            padding: 14px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            min-width: 220px;
+            border: 1px solid var(--border-color);
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+            border-color: transparent;
+        }
+
+        /* 字库PSD区域样式 */
+        .font-psd-section {
+            background: var(--bg-transparent);
+            border-radius: 8px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .font-psd-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        .font-psd-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 0 30px;
+            margin-top: 80px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        /* 日志样式 */
+        .changelog {
+            margin-bottom: 40px;
+        }
+        
+        .changelog-date {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 30px 0 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .changelog ul {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .changelog li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        
+        .changelog .highlight {
+            color: #d35400;
+            font-weight: 500;
+        }
+
+        /* 提示样式 */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(230, 247, 255, 0.9), rgba(204, 232, 255, 0.9));
+            border: 1px solid #bed6e3;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            color: #103667;
+        }
+        
+        .tip-box h3 {
+            color: #0a2463;
+            margin-bottom: 15px;
+        }
+        
+        .tip-box strong {
+            color: #0a2463;
+        }
+
+        @media (max-width: 1024px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-image img {
+                height: 280px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            nav ul {
+                gap: 20px;
+            }
+            
+            .authors {
+                grid-template-columns: 1fr;
+            }
+
+            .note::before {
+                position: relative;
+                display: block;
+                margin-bottom: 10px;
+                left: 0;
+                top: 0;
+                transform: none;
+            }
+
+            .note-content {
+                margin-left: 0;
+            }
+        }
+
+        /* 图片查看器模态框 */
+        .image-viewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-viewer.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .image-viewer-content {
+            position: relative;
+            max-width: 100%;
+            max-height: 90vh;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .image-viewer.active .image-viewer-content {
+            transform: scale(1);
+        }
+
+        .image-viewer img {
+            max-width: 100%;
+            max-height: 90vh;
+            display: block;
+            border: 3px solid white;
+            border-radius: 4px;
+        }
+
+        .close-viewer {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10;
+        }
+
+        .close-viewer:hover {
+            color: var(--primary-light);
+        }
+
+        .viewer-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .viewer-nav button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+        }
+
+        .viewer-nav button:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .viewer-caption {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow), var(--glow);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            box-shadow: var(--glow);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a href="#" class="logo">罪恶都市次世代汉化</a>
+                <nav>
+                    <ul>
+                        <li><a href="#remake">重制版介绍</a></li>
+                        <li><a href="#intro">汉化补丁</a></li>
+                        <li><a href="#installation">安装方法</a></li>
+                        <li><a href="#authors">作者信息</a></li>
+                        <li><a href="#download">下载</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <!-- 温馨提示移到标题上方 -->
+            <div class="note">
+                <div class="note-content">
+                    <p><strong>温馨提示：</strong>如果你的汉化出现种种问题，说明汉化不是最新版，请到此官网下载最新版本的汉化补丁！早期汉化补丁还有一些问题，我们发布后导致旧版被传播了，真的非常抱歉，现在所有内容均已经修复！</p>
+                    <p>本汉化补丁适用于：GTA4mod罪恶都市次世代版本，请检查你的游戏版号以获得兼容。</p>
+                </div>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">GTA：罪恶都市次世代版 汉化补丁</h1>
+                <p class="hero-subtitle">
+                    为基于RAGE引擎重制的《GTA：罪恶都市》提供完整中文支持，完美呈现经典游戏的全新体验
+                </p>
+            </div>
+            
+            <!-- 图片展示 - 增加到6张图 -->
+            <div class="image-grid">
+                <div class="game-image" data-img="https://img.acgs.one/2025-08-04/pLcd6ui32Q.webp" data-caption="罪恶都市重制版游戏截图1 - 汉化展示">
+                    <img src="https://img.acgs.one/2025-08-04/pLcd6ui32Q.webp" alt="罪恶都市重制版截图1">
+                </div>
+                <div class="game-image" data-img="https://img.acgs.one/2025-08-04/lieITaLcyh.webp" data-caption="罪恶都市重制版游戏截图2 - 汉化展示">
+                    <img src="https://img.acgs.one/2025-08-04/lieITaLcyh.webp" alt="罪恶都市重制版截图2">
+                </div>
+                <div class="game-image" data-img="https://img.acgs.one/2025-08-04/jYdequ7jOc.webp" data-caption="罪恶都市重制版游戏截图3 - 汉化展示">
+                    <img src="https://img.acgs.one/2025-08-04/jYdequ7jOc.webp" alt="罪恶都市重制版截图3">
+                </div>
+                <div class="game-image" data-img="https://img.acgs.one/2025-08-04/wKiNN7nStH.webp" data-caption="罪恶都市重制版游戏截图4 - 汉化展示">
+                    <img src="https://img.acgs.one/2025-08-04/wKiNN7nStH.webp" alt="罪恶都市重制版截图4">
+                </div>
+                <div class="game-image" data-img="https://img.acgs.one/2025-08-04/LyIP9SSaUG.webp" data-caption="罪恶都市重制版游戏截图5 - 汉化展示">
+                    <img src="https://img.acgs.one/2025-08-04/LyIP9SSaUG.webp" alt="罪恶都市重制版截图5">
+                </div>
+                <div class="game-image" data-img="https://img.acgs.one/2025-08-04/Yj9DcPOfbb.webp" data-caption="罪恶都市重制版游戏截图6 - 汉化展示">
+                    <img src="https://img.acgs.one/2025-08-04/Yj9DcPOfbb.webp" alt="罪恶都市重制版截图6">
+                </div>
+            </div>
+            
+            <div class="hero-cta">
+                <button class="btn-primary" id="downloadBtn">下载汉化补丁</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 图片查看器 -->
+    <div class="image-viewer" id="imageViewer">
+        <div class="image-viewer-content">
+            <span class="close-viewer">&times;</span>
+            <img src="" alt="大图预览" id="viewerImage">
+            <div class="viewer-caption" id="viewerCaption"></div>
+            <div class="viewer-nav">
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 重制版介绍区域 -->
+    <section id="remake" class="section">
+        <div class="container">
+            <h2 class="section-title">次世代重制版介绍</h2>
+            
+            <div class="card text-content">
+                <h3>基于RAGE引擎的全新体验</h3>
+                <p>就在1月25日，名为“Revolution Team”的第三方团队推出了自己基于RAGE引擎重制的《GTA：罪恶都市次世代版》，其将原版游戏的所有任务、地图和内容移植到了RAGE引擎上。</p>
+                
+                <p>这款重制版带来了更精美的城市版本和来自《GTA三部曲：最终版》的武器，包含所有原版Xbox游戏中的载具。此外，所有角色和行人的模型也将采用Xbox版本的设计。</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-marker"></div>
+                        <div>
+                            <strong style="color: var(--primary-dark);">完整内容移植</strong>
+                            <p>保留原版所有任务、地图和游戏内容，原汁原味的游戏体验</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-marker"></div>
+                        <div>
+                            <strong style="color: var(--primary-dark);">升级视觉效果</strong>
+                            <p>借助RAGE引擎提升画面质量，呈现更精美的罪恶都市</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-marker"></div>
+                        <div>
+                            <strong style="color: var(--primary-dark);">扩展内容</strong>
+                            <p>包含《GTA三部曲：最终版》的武器和原版Xbox游戏中的载具</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 汉化补丁介绍区域 -->
+    <section id="intro" class="section">
+        <div class="container">
+            <h2 class="section-title">汉化补丁介绍</h2>
+            
+            <div class="card text-content">
+                <p>这款基于RAGE引擎的《GTA：罪恶都市次世代版》推出后受到广泛关注，但长期缺乏中文支持，我们的汉化补丁正是为解决这一问题而开发！</p>
+                
+                <p>所有的工作都是出于兴趣的使然！在Clans完成了适用于GTA4 1.07(Vice City Next Gen Edition)的汉化程序之后，进行了机器翻译文本，并且汉化成功，但当时表示并不会制作次汉化补丁，倾城剑舞顿时有了想法，便开始了罪恶都市的汉化文本移植工作！</p>
+                
+                <p>不久之后有人表示希望推出罪吧汉化组的文本汉化，于是倾城剑舞便再次开始汉化文本移植工作！</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-marker"></div>
+                        <div>
+                            <strong style="color: var(--primary-dark);">完整汉化</strong>
+                            <p>所有游戏文本均已完成汉化移植工作，包括菜单、对话、任务说明等</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-marker"></div>
+                        <div>
+                            <strong style="color: var(--primary-dark);">问题修复</strong>
+                            <p>修复了文本遗漏、粉色字体和任务名称显示问题，提供完美体验</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-marker"></div>
+                        <div>
+                            <strong style="color: var(--primary-dark);">最新版本</strong>
+                            <p>包含开场贴图汉化，更新日期：2025年8月3日，持续更新维护</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 新增：汉化说明以及修复日志 -->
+                <h3 style="margin-top: 40px;">汉化说明以及修复日志</h3>
+                <div class="changelog">
+                    <div class="changelog-date">2025年8月1日更新日志：</div>
+                    <ul>
+                        <li>修复：一处漏翻问题</li>
+                        <li>新增：罪吧汉化文本移植</li>
+                        <li>修复：使用VC原版粉色字体</li>
+                        <li>修复：任务名称在存档不显示的问题！</li>
+                        <li>修复：任务字体使用原来的黄色字体</li>
+                        <li>新增：开始游戏之后动画字幕汉化</li>
+                    </ul>
+
+                    <div class="changelog-date">2025年8月2日更新日志：</div>
+                    <ul>
+                        <li>修复：部分地名以及任务字幕中有“？”的问题</li>
+                        <li>修复：大结局完成之后不显示 演员表字幕的问题</li>
+                        <li>修复：资产盈利多少$ 不正常显示，只显示“$”的问题</li>
+                        <li>修复：字体太细，导致英文和中文在一起显示不协调的问题</li>
+                        <li>修复：隐藏包裹 x共x 等字幕不显示等问题</li>
+                        <li>重建：字库贴图与psd</li>
+                    </ul>
+
+                    <div class="changelog-date">2025年8月3日更新日志（晚上）：</div>
+                    <ul>
+                        <li>修复：大结局任务第二段仍然是英文的问题</li>
+                        <li>修复：更新1.2版本之后，部分任务时间字幕错误的问题</li>
+                        <li>修复：部分标点符号缺失等问题</li>
+                        <li>新增：进游戏的贴图界面汉化</li>
+                    </ul>
+
+<div class="changelog-date">2025年8月4日更新日志：</div>
+                    <ul>
+                        <li>修复：主菜单英文和汉字对不齐的问题</li>
+                        <li>修复：无名汉化组【PCJ车舞】字幕出错问题</li>
+                        <li>修复：资产盈利 $ 显示正常颜色</li>
+                    </ul>
+
+                    <p class="highlight">目前测试已经完成所有主线和支线任务！！版本为最终版！</p>
+                    <p>测试员@老寒秋，为了测试bug又全通了一次VC的所有任务，致敬！</p>
+                </div>
+
+                <h3 style="margin-top: 40px;">汉化内容说明</h3>
+                <p style="margin: 20px 0;">本汉化补丁包含以下内容：</p>
+                <ul style="padding-left: 20px; margin-bottom: 30px; line-height: 2; color: var(--text-secondary);">
+                    <li>GTA4的汉化文本（主菜单）</li>
+                    <li>无名汉化组的VC文本</li>
+                    <li>罪吧汉化组的VC文本</li>
+                    <li>倾城剑舞翻译的新增内容</li>
+                </ul>
+
+                <!-- 新增的汉化内容说明 -->
+                <p>针对罪恶都市次世代的汉化补丁制作基于 @clans 开源的gta4汉化源码，开源的伟大无需多言</p>
+                <p>次世代文本新增内容由 @倾城剑舞 移植</p>
+                <p>汉化字库也由@倾城剑舞 制作</p>
+                <p>@the寒秋 对汉化补丁进行了整体测试</p>
+                <p>鸣谢@Lzh10_慕黑 @疯人院院长</p>
+                <p>在此致敬所有热爱GTA的伙伴们</p>
+
+                <p style="margin: 20px 0; color: #d35400; font-weight: 500;">本整合包永久免费（补丁也是免费的），请辨别付费渠道，避免上当受骗</p>
+                <p style="margin: 20px 0; color: #d35400; font-weight: 600; font-size: 1.1rem;">严禁倒卖！！！！！！！</p>
+
+                <!-- 新增的提示区域 -->
+                <div class="tip-box">
+                    <h3>提示：</h3>
+                    <p>一般来说，你只要把所有文件解压出来，游戏是可以正常运行的（不会这些电脑基础的还是去找个教程慢慢学吧）</p>
+                    <p>经测试，Fusionfix补丁会增加运行游戏的负担，现已删除</p>
+                    <p>请不要额外添加gta4的模组，这可能会导致游戏崩溃等问题</p>
+                    <p><strong>也不要乱删整合包内的文件，特别是876bd1d9393712ac.bin 划重点！！！！这个删了游戏一定运行不了！！！
+</strong></p>
+                </div>
+                
+                <p style="margin: 20px 0;">汉化程序是开源的，托管在：</p>
+                <a href="https://github.com/ckeleshi/GTA4.CHS/tree/vcnge107" target="_blank" class="github-btn">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub 仓库</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 安装指南 -->
+    <section id="installation" class="section">
+        <div class="container">
+            <h2 class="section-title">安装方法</h2>
+            <div class="card">
+                <div class="installation-steps">
+                    <div class="step">
+                        <p>将【pc】【plugins】文件夹以及【dinput8.dll】复制到GTA4罪恶都市次世代版游戏目录下替换！</p>
+                    </div>
+                    <div class="step">
+                        <p>选择自己想要的版本，双击进入目录，然后再将里面的【common】文件夹也复制到GTA4罪恶都市次世代版游戏目录下替换！</p>
+                    </div>
+                    <div class="step">
+                        <p>完成上述步骤后即可启动游戏！</p>
+                    </div>
+                    <div class="step">
+                        <p>如果启动器启动游戏失败！请打开游戏目录，使用目录下的【LaunchGTAIV.exe】启动游戏即可！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作者信息 -->
+    <section id="authors" class="section">
+        <div class="container">
+            <h2 class="section-title">项目作者</h2>
+            <div class="authors">
+                <div class="author-item">
+                    <div class="author-name">倾城剑舞</div>
+                    <div class="author-role">汉化移植与错误修复</div>
+                    <div class="author-desc">负责罪吧和无名的汉化移植和修复错误工作，以及新增内容的翻译，确保汉化质量和完整性。</div>
+                </div>
+                <div class="author-item">
+                    <div class="author-name">Clans</div>
+                    <div class="author-role">汉化程序开发</div>
+                    <div class="author-desc">开发了适用于GTA4 1.07(Vice City Next Gen Edition)的汉化程序，为汉化工作奠定了技术基础。</div>
+                </div>
+                <div class="author-item">
+                    <div class="author-name">无名汉化组 & 罪吧汉化组</div>
+                    <div class="author-role">原始文本汉化</div>
+                    <div class="author-desc">提供了罪恶都市原版游戏的中文文本，为本项目奠定了翻译基础，保障了汉化的准确性。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 下载区域 -->
+    <section id="download" class="section">
+        <div class="container">
+            <h2 class="section-title">下载资源</h2>
+            <div class="download-section">
+                <h3>选择需要下载的资源</h3>
+                <p>请选择你要下载的文件：</p>
+                
+                <div class="download-options">
+                    <a href="https://pan.baidu.com/s/1-WeqKuvpVRQSQhEdfm4FKA?pwd=j9ic" target="_blank" class="download-btn" data-source="vc4chs">
+                        汉化补丁
+                    </a>
+                    <a href="https://pan.baidu.com/s/1-vZwLz8e3dNtC0ECQvDJDw?pwd=pv9w" target="_blank" class="download-btn" data-source="vc4">
+                        次世代版原版本体
+                    </a>
+                    <a href="https://pan.baidu.com/s/19ZHXpjatitEyqulFdFySdQ?pwd=94eh" target="_blank" class="download-btn" data-source="vc41.2">
+                        更新补丁 V1.2
+                    </a>
+                    <a href="https://pan.baidu.com/s/1eeD-CAZGzUp3MkihLzZLUw?pwd=q2fi" target="_blank" class="download-btn" data-source="vc4-integrated">
+                        【解压即玩】次世代1.2汉化整合包
+                    </a>
+                </div>
+            </div>
+
+            <!-- 新增字库PSD区域 -->
+            <div class="font-psd-section">
+                <h3>字库PSD</h3>
+                <p>喜欢自定义字体？不错的想法！我们提供了字体贴图PSD可供您自由编辑！</p>
+                <a href="https://pan.baidu.com/s/1rvltvmc1sSPHE-oii3QJyQ?pwd=ykmt" target="_blank" class="download-btn">
+                    获取字体贴图PSD
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 GTA：罪恶都市次世代版汉化项目</p>
+        </div>
+    </footer>
+
+    <script>
+        // 页面加载完成后隐藏加载动画
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').style.opacity = '0';
+                setTimeout(function() {
+                    document.querySelector('.loader').style.display = 'none';
+                }, 500);
+            }, 800);
+
+            // 导航平滑滚动
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // 下载按钮点击滚动到下载区域
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.addEventListener('click', function() {
+                document.getElementById('download').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+
+            // 图片查看器功能
+            const imageViewer = document.getElementById('imageViewer');
+            const viewerImage = document.getElementById('viewerImage');
+            const viewerCaption = document.getElementById('viewerCaption');
+            const closeViewer = document.querySelector('.close-viewer');
+            const gameImages = document.querySelectorAll('.game-image');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentImageIndex = 0;
+
+            // 打开图片查看器
+            gameImages.forEach((img, index) => {
+                img.addEventListener('click', function() {
+                    currentImageIndex = index;
+                    viewerImage.src = this.getAttribute('data-img');
+                    viewerCaption.textContent = this.getAttribute('data-caption');
+                    imageViewer.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // 关闭图片查看器
+            closeViewer.addEventListener('click', function() {
+                imageViewer.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // 点击外部关闭
+            imageViewer.addEventListener('click', function(e) {
+                if (e.target === imageViewer) {
+                    imageViewer.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // 上一张图片
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentImageIndex = (currentImageIndex - 1 + gameImages.length) % gameImages.length;
+                const img = gameImages[currentImageIndex];
+                viewerImage.src = img.getAttribute('data-img');
+                viewerCaption.textContent = img.getAttribute('data-caption');
+            });
+
+            // 下一张图片
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentImageIndex = (currentImageIndex + 1) % gameImages.length;
+                const img = gameImages[currentImageIndex];
+                viewerImage.src = img.getAttribute('data-img');
+                viewerCaption.textContent = img.getAttribute('data-caption');
+            });
+
+            // 键盘导航
+            document.addEventListener('keydown', function(e) {
+                if (!imageViewer.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    imageViewer.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else if (e.key === 'ArrowLeft') {
+                    currentImageIndex = (currentImageIndex - 1 + gameImages.length) % gameImages.length;
+                    const img = gameImages[currentImageIndex];
+                    viewerImage.src = img.getAttribute('data-img');
+                    viewerCaption.textContent = img.getAttribute('data-caption');
+                } else if (e.key === 'ArrowRight') {
+                    currentImageIndex = (currentImageIndex + 1) % gameImages.length;
+                    const img = gameImages[currentImageIndex];
+                    viewerImage.src = img.getAttribute('data-img');
+                    viewerCaption.textContent = img.getAttribute('data-caption');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+    
