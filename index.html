@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
@@ -596,6 +597,26 @@
             min-width: 220px;
             border: 1px solid var(--border-color);
         }
+        
+        .download-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .download-btn-pair {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .download-btn-pair .download-btn {
+            flex: 1;
+            min-width: auto;
+            padding: 14px 15px;
+            text-align: center;
+        }
 
         .download-btn:hover {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -603,6 +624,16 @@
             transform: translateY(-3px);
             box-shadow: var(--glow);
             border-color: transparent;
+        }
+        
+        .baidu-btn {
+            background: #2932e1;
+            color: white;
+        }
+        
+        .quark-btn {
+            background: #ff5722;
+            color: white;
         }
 
         /* 字库PSD区域样式 */
@@ -776,8 +807,16 @@
                 align-items: center;
             }
             
+            .download-btn-group {
+                max-width: 100%;
+            }
+            
+            .download-btn-pair {
+                flex-direction: column;
+            }
+            
             .download-btn {
-                min-width: 80%;
+                min-width: 100%;
             }
             
             .note {
@@ -1129,7 +1168,7 @@
                         <div class="feature-marker"></div>
                         <div>
                             <strong style="color: var(--primary-dark);">最新版本</strong>
-                            <p>包含开场贴图汉化，更新日期：2025年8月3日，持续更新维护</p>
+                            <p>包含开场贴图汉化，更新日期：2025年8月4日，持续更新维护</p>
                         </div>
                     </div>
                 </div>
@@ -1200,7 +1239,6 @@
                 <div class="tip-box">
                     <h3><i class="fas fa-exclamation-triangle"></i> 提示：</h3>
                     <p>一般来说，你只要把所有文件解压出来，游戏是可以正常运行的（不会这些电脑基础的还是去找个教程慢慢学吧）</p>
-                    <p>经测试，Fusionfix补丁会增加运行游戏的负担，现已删除</p>
                     <p>请不要额外添加gta4的模组，这可能会导致游戏崩溃等问题</p>
                     <p><strong>也不要乱删整合包内的文件，特别是876bd1d9393712ac.bin 划重点！！！！这个删了游戏一定运行不了！！！
 </strong></p>
@@ -1270,18 +1308,53 @@
                 <p>请选择你要下载的文件：</p>
                 
                 <div class="download-options">
-                    <a href="https://pan.baidu.com/s/1-WeqKuvpVRQSQhEdfm4FKA?pwd=j9ic" target="_blank" class="download-btn" data-source="vc4chs">
-                        汉化补丁
-                    </a>
-                    <a href="https://pan.baidu.com/s/1-vZwLz8e3dNtC0ECQvDJDw?pwd=pv9w" target="_blank" class="download-btn" data-source="vc4">
-                        次世代版原版本体
-                    </a>
-                    <a href="https://pan.baidu.com/s/19ZHXpjatitEyqulFdFySdQ?pwd=94eh" target="_blank" class="download-btn" data-source="vc41.2">
-                        更新补丁 V1.2
-                    </a>
-                    <a href="https://pan.baidu.com/s/1eeD-CAZGzUp3MkihLzZLUw?pwd=q2fi" target="_blank" class="download-btn" data-source="vc4-integrated">
-                        【解压即玩】次世代1.2汉化整合包
-                    </a>
+                    <div class="download-btn-group">
+                        <h4>汉化补丁</h4>
+                        <div class="download-btn-pair">
+                            <a href="https://pan.baidu.com/s/1-WeqKuvpVRQSQhEdfm4FKA?pwd=j9ic" target="_blank" class="download-btn baidu-btn">
+                                <i class="fab fa-baidu"></i> 百度网盘
+                            </a>
+                            <a href="https://pan.quark.cn/s/b23fb7963128?pwd=TRmB" target="_blank" class="download-btn quark-btn">
+                                <i class="fas fa-cloud"></i> 夸克网盘
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="download-btn-group">
+                        <h4>次世代版原版本体</h4>
+                        <div class="download-btn-pair">
+                            <a href="https://pan.baidu.com/s/1-vZwLz8e3dNtC0ECQvDJDw?pwd=pv9w" target="_blank" class="download-btn baidu-btn">
+                                <i class="fab fa-baidu"></i> 百度网盘
+                            </a>
+                            <a href="https://pan.quark.cn/s/2278e101a837?pwd=Ltm8" target="_blank" class="download-btn quark-btn">
+                                <i class="fas fa-cloud"></i> 夸克网盘
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="download-btn-group">
+                        <h4>更新补丁 V1.2</h4>
+                        <div class="download-btn-pair">
+                            <a href="https://pan.baidu.com/s/19ZHXpjatitEyqulFdFySdQ?pwd=94eh" target="_blank" class="download-btn baidu-btn">
+                                <i class="fab fa-baidu"></i> 百度网盘
+                            </a>
+                            <a href="https://pan.quark.cn/s/990fa6870558?pwd=CNe2" target="_blank" class="download-btn quark-btn">
+                                <i class="fas fa-cloud"></i> 夸克网盘
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="download-btn-group">
+                        <h4>【解压即玩】次世代1.2汉化整合包</h4>
+                        <div class="download-btn-pair">
+                            <a href="https://pan.baidu.com/s/1eeD-CAZGzUp3MkihLzZLUw?pwd=q2fi" target="_blank" class="download-btn baidu-btn">
+                                <i class="fab fa-baidu"></i> 百度网盘
+                            </a>
+                            <a href="https://pan.quark.cn/s/5b1abd79f365?pwd=PGLc" target="_blank" class="download-btn quark-btn">
+                                <i class="fas fa-cloud"></i> 夸克网盘
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1407,4 +1480,3 @@
     </script>
 </body>
 </html>
-    
